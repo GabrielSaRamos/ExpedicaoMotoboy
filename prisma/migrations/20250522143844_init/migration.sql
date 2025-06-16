@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE `motoboy` MODIFY `seq` INTEGER NOT NULL DEFAULT 0,
+    MODIFY `status` VARCHAR(191) NOT NULL DEFAULT 'Ativo',
+    MODIFY `entregas` INTEGER NOT NULL DEFAULT 0,
+    MODIFY `previsaoRetorno` VARCHAR(191) NOT NULL DEFAULT '';

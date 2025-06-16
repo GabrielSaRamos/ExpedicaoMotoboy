@@ -1,0 +1,40 @@
+
+
+services:
+  expedicaomotoboy: # Seu serviço Next.js
+    build:
+      context: . # Assume que o Dockerfile está na raiz do projeto
+      dockerfile: Dockerfile # Nome do seu Dockerfile
+    container_name: nextjs_app_dev # Sugestão: adicionar _dev para clareza
+    ports:
+      - "3001:3000" # Você está mapeando a porta 3000 do container para a 3001 do host
+    volumes:
+      - .:/app # Monta o código-fonte local em /app no container
+      - /app/node_modules # Isola node_modules no container
+      - /app/.next # Isola o diretório .next (cache de desenvolvimento do Next.js) no container
+    env_file:
+      - .env # Carrega variáveis de ambiente do arquivo .env
+    environment:
+      NODE_ENV: development # Define explicitamente o ambiente como desenvolvimento
+      # Adicione outras variáveis de ambiente específicas para desenvolvimento aqui, se necessário
+      # Exemplo: NEXT_PUBLIC_API_URL: http://localhost:3001/api
+    command: npm run dev # OU yarn dev, OU npx next dev
+                         # Este é o comando para iniciar em modo de desenvolvimento
+    depends_on:
+      - db # Garante que o serviço 'db' inicie antes do 'app'
+
+  db: # Seu serviço PostgreSQL
+    image: postgres:15
+    container_name: postgres_db_dev # Sugestão: adicionar _dev para clareza
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: expedicao_db
+    ports:
+      - "5432:5432" # Mapeia a porta 5432 do container para a 5432 do host
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persiste os dados do PostgreSQL
+
+volumes:
+  postgres_data: # Define o volume nomeado para persistência dos dados do PostgreSQL
