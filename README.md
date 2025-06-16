@@ -1,20 +1,17 @@
-# Expedição Motoboy Frontend
+# Expedição Motoboy 
 
 ## 🏁 Inicio 
 Bem-vindo ao frontend do sistema de expedição para motoboys! Este projeto foi desenvolvido com React + TypeScript, focando na criação de uma interface simples, intuitiva e responsiva para facilitar o gerenciamento logístico e o dia a dia dos motoboys e supervisores.
 <br>
 
-- 🛠️ Tecnologias Utilizadas
+### 🛠️ Tecnologias Utilizadas:
 - ⚛️ React
 - ✨ TypeScript
-- 🧰 Vite
-- 🎨 Tailwind CSS
 - 🔐 Integração com autenticação JWT
 - 📦 Axios (para requisições HTTP)
 - 🌐 React Router DOM (navegação SPA)
 - 📋 Funcionalidades
 - 🔐 Login com autenticação JWT
-- 👨‍💼 Interface diferenciada para cada tipo de usuário (Supervisor, Motoboy)
 - 🧾 Visualização de entregas
 - 🧑‍💼 Listagem e cadastro de usuários
 - ✅ Controle de permissões baseado na role do usuário
